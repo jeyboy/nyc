@@ -3,16 +3,23 @@
     <div class="container">
       <div class="row">
         <h1 class="big-title">NYC Building Energy Usage Per Year <%=@min_year%>-<%=@max_year%></h1>
-        <%= form_for :year, url: {action: 'index'} do |f| %>
-            <%= f.number_field :year, in: @min_year..@max_year %>
+        <%= form_for :filters, url: {action: 'index'}, method: :get do |f| %>
+            <%= number_field_tag :year, @year, in: @min_year..@max_year %>
             <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>
       </div>
-      <table class="row">
+      <br />
+      <table class="table">
         <tr>
-          <th>
-
-          </th>
+          <th>Building</th>
+          <th>Year</th>
+          <th>Electricity Cost ($)</th>
+          <th>Electricity Demand (KW)</th>
+          <th>Electricity Usage (KWH)</th>
+          <th>Gas (Therms)</th>
+          <th>Gas Cost ($)</th>
+          <th>Steam (mlbs)</th>
+          <th>Total Usage (mmBTUs)</th>
         </tr>
         <%= render @energy_usages %>
       </table>

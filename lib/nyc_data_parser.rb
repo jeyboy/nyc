@@ -14,12 +14,7 @@ class NycDataParser
       json.each do |row|
         next if row.empty?
 
-        meas = row.delete('measurement')
-
-        measurement_id = measurements[meas]
-        unless measurement_id
-          i = 0
-        end
+        measurement_id = measurements[row.delete('measurement')]
 
         location, name = row.delete('location_1_location').split(/ \[|\]/)
         building = Building.find_or_create_by!(name: name, location: location)

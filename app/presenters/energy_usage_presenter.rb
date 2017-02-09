@@ -40,7 +40,7 @@ class EnergyUsagePresenter
         i += 1
       end
 
-      yield k[0], attrs
+      yield k[0], @year, attrs
     end
   end
 end

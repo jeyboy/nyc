@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20170209125617) do
 
   create_table "buildings", force: :cascade do |t|
     t.string "name"
-    t.string "location"
   end
 
   create_table "energy_usages", force: :cascade do |t|

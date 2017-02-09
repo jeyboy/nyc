@@ -16,8 +16,8 @@ class NycDataParser
 
         measurement_id = measurements[row.delete('measurement')]
 
-        location, name = row.delete('location_1_location').split(/ \[|\]/)
-        building = Building.find_or_create_by!(name: name, location: location)
+        name = row.delete('location_1_location')
+        building = Building.find_or_create_by!(name: name)
 
         row.to_a.each do |(key, val)|
           next if (key =~ /_|fy_/) == 0

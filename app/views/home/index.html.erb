@@ -3,31 +3,13 @@
     <div class="container">
       <div class="row">
         <h1 class="big-title">NYC Building Energy Usage Per Year <%=@presenter.min_year%>-<%=@presenter.max_year%></h1>
-        <%= form_for :filters, url: {action: 'index'}, method: :get do |f| %>
+        <%= form_for :filters, url: {action: 'index'}, method: :get, remote: true do |f| %>
             <%= number_field_tag :year, @presenter.year, in: @presenter.min_year..@presenter.max_year %>
             <%= f.submit "Submit", class: "btn btn-primary" %>
         <% end %>
       </div>
       <br />
-      <table class="table">
-        <tr>
-          <th>Building</th>
-          <th>Year</th>
-          <%- @presenter.each_measurement do |measurement|%>
-            <th><%= measurement%></th>
-          <% end %>
-        </tr>
-
-        <%- @presenter.each_building_attrs do |name, year, attrs|%>
-            <tr>
-              <td><%= name%></td>
-              <td><%= year%></td>
-              <%- attrs.each do |attr|%>
-                  <td><%= attr%></td>
-              <% end %>
-            </tr>
-        <% end %>
-      </table>
+      <%= render partial: 'home/data_table', locals: {'@presenter' => @presenter}%>
     </div>
   </div>
 </div>

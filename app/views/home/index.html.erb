@@ -12,19 +12,20 @@
       <table class="table">
         <tr>
           <th>Building</th>
-          <th>Year</th>
-          <th>Electricity Cost ($)</th>
-          <th>Electricity Demand (KW)</th>
-          <th>Electricity Usage (KWH)</th>
-          <th>Gas (Therms)</th>
-          <th>Gas Cost ($)</th>
-          <th>Steam (mlbs)</th>
-          <th>Total Usage (mmBTUs)</th>
+          <%- @presenter.each_measurement do |measurement|%>
+            <th><%= measurement%></th>
+          <% end %>
         </tr>
-        <%= render @energy_usages %>
-      </table>
 
-      <%= paginate @energy_usages %>
+        <%- @presenter.each_building_attrs do |name, attrs|%>
+            <tr>
+              <td><%= name%></td>
+              <%- attrs.each do |attr|%>
+                  <td><%= attr%></td>
+              <% end %>
+            </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

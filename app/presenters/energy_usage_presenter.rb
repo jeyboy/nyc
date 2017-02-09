@@ -11,9 +11,7 @@ class EnergyUsagePresenter
     @max_year = EnergyUsage.maximum(:year)
     @year = params[:year] || @min_year
 
-    @energy_usages = Building.joins(:energy_usages)
-    @energy_usages = @energy_usages.where(energy_usages: {year: @year}) if @year
-
+    @energy_usages = Building.joins(:energy_usages).where(energy_usages: {year: @year})
     @energy_usages = @energy_usages.order('buildings.name','energy_usages.measurement_id')
        .group('buildings.name','energy_usages.measurement_id')
        .sum(:amount)

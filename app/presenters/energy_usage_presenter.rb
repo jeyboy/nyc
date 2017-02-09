@@ -20,6 +20,6 @@ class EnergyUsagePresenter
       hash[item.first.first][item.first.last]=item.last
     end
 
-    @measurements = Measurement.all.map(&:name)
+    @measurements = Measurement.pluck(:name)
   end
 end

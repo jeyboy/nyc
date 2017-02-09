@@ -36,7 +36,7 @@ class EnergyUsagePresenter
     @energy_usages.each_pair do |k, v|
       i = 0
       attrs = @measurements.each_with_object([]) do |(mid, _), res|
-        res << ((v[i][0][1] rescue -1) == mid ? v[i][1] : 0)
+        res << ((v[i][0][1] rescue -1) == mid ? ActionController::Base.helpers.number_to_currency(v[i][1]) : 0.0)
         i += 1
       end
 

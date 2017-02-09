@@ -2,13 +2,13 @@ class FillMeasurements < ActiveRecord::Migration
   def change
     ActiveRecord::Base.transaction do
       [
-        'Electricity Demand (KW)',
-        'Electricity Usage (KWH)',
-        'Gas (Therms)',
-        'Total Usage (mmBTUs)',
-        'Steam (mlbs)',
-        'Electricity Cost ($)',
-        'Gas Cost ($)'
+          'Electricity Cost ($)',
+          'Electricity Demand (KW)',
+          'Electricity Usage (KWH)',
+          'Gas (Therms)',
+          'Gas Cost ($)',
+          'Steam (mlbs)',
+          'Total Usage (mmBTUs)'
       ].each do |name|
         Measurement.find_or_create_by!(name: name)
       end

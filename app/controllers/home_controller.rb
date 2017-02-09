@@ -3,9 +3,9 @@ class HomeController < ApplicationController
     @year = params[:year]
     @min_year = EnergyUsage.minimum(:year)
     @max_year = EnergyUsage.maximum(:year)
-    @energy_usage = Building.joins(energy_usages: :measurement)
-    @energy_usage = @energy_usage.where(energy_usages: {year: @year}) if @year
+    @energy_usages = Building.joins(energy_usages: :measurement)
+    @energy_usages = @energy_usages.where(year: @year) if @year
 
-    @energy_usage = @energy_usage.per(50).page params[:page]
+    @energy_usages = @energy_usages.page(params[:page]).per(50)
   end
 end

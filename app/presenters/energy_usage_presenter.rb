@@ -4,7 +4,6 @@ class EnergyUsagePresenter
   class_attribute :min_year
   class_attribute :max_year
   class_attribute :measurements
-  class_attribute :id_relations
 
   def initialize(params)
     @min_year = EnergyUsage.minimum(:year)

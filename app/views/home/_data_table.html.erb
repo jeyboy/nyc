@@ -9,7 +9,7 @@
 
   <%- @presenter.energy_usages.each do |name, usages|%>
       <tr>
-        <td><%= name%></td>
+        <td><%== name%></td>
         <td><%= @presenter.year%></td>
         <%- @presenter.measurements.each do |measurement|%>
             <td><%= number_to_currency(usages[measurement])|| 0.0 %></td>
